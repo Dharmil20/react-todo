@@ -3,9 +3,7 @@ import { useState } from 'react';
 
 
 export default function TodoInput(props) {
-    const { handleAddTodo } = props;
-
-    let [todoValue, setTodoValue] = useState('');
+    const {setTodoValue, todoValue, handleAddTodo } = props;
     return (
         <header>
             <input value={todoValue} onChange={(e) => {

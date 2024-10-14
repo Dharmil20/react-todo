@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 function App() { //Function name always capitalized
   const [todos, setTodos] = useState([]);
+  const [todoValue, setTodoValue] = useState('');
 
   function handleAddTodo(newTodo){
     const newTodoList = [...todos, newTodo]
@@ -17,10 +18,16 @@ function App() { //Function name always capitalized
     setTodos(newTodoList);
   }
 
+  function handleEditTodo(key){
+    const valueToBeEdited = todos[key];
+    setTodoValue(valueToBeEdited);
+    deleteTodo(key);
+  }
+
   return (
     <>
-      < TodoInput handleAddTodo={handleAddTodo}/>
-      < TodoList deleteTodo={deleteTodo} todos={todos}/>
+      < TodoInput todoValue={todoValue} setTodoValue={setTodoValue} handleAddTodo={handleAddTodo}/>
+      < TodoList handleEditTodo={handleEditTodo} deleteTodo={deleteTodo} todos={todos}/>
 
       {/* It returns JSx; JS is run inside curly braces just like this comment */}
     </>
